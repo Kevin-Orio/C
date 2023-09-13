@@ -1,2 +1,1 @@
-# C
-data structure based on C
+# Data Structure In C
