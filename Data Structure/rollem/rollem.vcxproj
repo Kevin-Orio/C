@@ -140,6 +140,9 @@
   <ItemGroup>
     <ClCompile Include="diceroll.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="diceroll.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
