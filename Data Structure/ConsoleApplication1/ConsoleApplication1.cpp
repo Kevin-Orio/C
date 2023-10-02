@@ -33,14 +33,16 @@ SLLNode* BuySLLNode(SLLDataType x)
 	return newnode;
 }
 
-void SLLPushBack(SLLNode** phead, SLLDataType x)	//尾插
+void SLLPushBack(SLLNode** pphead, SLLDataType x)	//尾插 
+//这里使用一个指针指向phead，从而可以在函数中修改phead值。否则，若直接将phead传入函数，函数得到的其实是phead的副本，参见形参传递。
 {
-	if (*phead == NULL) *phead = BuySLLNode(x);
+	if (*pphead == NULL) *pphead = BuySLLNode(x);
 	else 
 	{
-		while(*phead->data)
+		SLLNode* p = *pphead;	//这里将
+		while(*p->data)
 		{
-			*phead = *phead->next;
+			*pphead = *pphead->next;
 		}
 	}
 }
