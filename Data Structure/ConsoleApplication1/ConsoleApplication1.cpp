@@ -7,7 +7,7 @@ typedef struct SLLNode
 {
 	SLLDataType data;		//int data
 	struct SLLNode* next;
-};
+}SLLNode;
 
 void SLLPrint(SLLNode* phead)		//head pointer, phead for short
 {
