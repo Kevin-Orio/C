@@ -98,15 +98,44 @@ int BinaryTreeLeafSize(BTNode* root)
 	return BinaryTreeLeafSize(root->left) + BinaryTreeLeafSize(root->left);
 }
 
+//第k层结点数
 int BinaryLevelKSize(BTNode* root, int k)
 {
-	for (int i = 1; i < k; i++)
+	if (root == NULL)
 	{
-
+		return 0;
 	}
-	if (root != NULL)
+
+	if (k == 1)
 	{
 		return 1;
 	}
+
 	return BinaryLevelKSize(root->left, k-1) + BinaryLevelKSize(root->right, k-1);
 }
+
+//查找特定值的结点（假设树中没有两个结点的值相同）
+BTNode* BinaryTreeFind(BTNode* root, BTDataType x)
+{
+	if (root == NULL)
+	{
+		return NULL;
+	}
+	if (root->data == x)
+	{
+		return root;
+	}
+	BTNode* p1 = BinaryTreeFind(root->left, x); //返回的p1可能是null，也可能是一个BTNode* 
+	if (p1->data == x)
+	{
+		return p1;
+	}
+	BTNode* p2 = BinaryTreeFind(root->right, x);
+	if (p2->data == x)
+	{
+		return p2;
+	}
+}
+
+//层序遍历，每层从左往右遍历，使用队列先进先出，pop一个结点，push两个子结点
+
