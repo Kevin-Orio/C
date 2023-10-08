@@ -24,7 +24,7 @@ void SLLPopFront(SLLNode** pphead);
 // 单链表查找
 SLLNode* SLLFind(SLLNode* phead, SLLDataType x);
 // 单链表在pos位置之后插入x
-void SLLInsertAfter(SLLDataType x, SLLNode* pos);
+void SLLInsertAfter(SLLNode* pos, SLLDataType x);
 // 单链表删除pos位置之后的值
 void SLLEraseAfter(SLLNode* pos);
 // 单链表的销毁

@@ -1,0 +1,5 @@
+﻿cl : 命令行 warning D9025: 正在重写“/sdl”(用“/GS-”)
+  SLL.cpp
+  test.cpp
+  正在生成代码...
+  Single Linked List.vcxproj -> D:\CODE\C\Data Structure\Single Linked List\Debug\Single Linked List.exe

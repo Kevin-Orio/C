@@ -1,5 +1,6 @@
+#define _CRT_SECURE_NO_WARNINGS 1
 #include"SLL.h"
-
+//null指针什么都没有，也就是说null不存在data和next
 void SLLPrint(SLLNode* phead)
 {
 	SLLNode* p = phead;
@@ -13,7 +14,7 @@ void SLLPrint(SLLNode* phead)
 
 SLLNode* BuySLLNode(SLLDataType x)
 {
-	SLLNode* newnode = (SLLNode*)malloc(sizeof(SLLNode));
+	SLLNode* newnode = (SLLNode *)malloc(sizeof(SLLNode));
 	if (newnode == NULL)
 	{
 		perror("malloc");
@@ -28,15 +29,19 @@ SLLNode* BuySLLNode(SLLDataType x)
 void SLLPushBack(SLLNode** pphead, SLLDataType x)
 //这里使用一个指针指向phead，从而可以在函数中修改phead值。否则，若直接将phead传入函数，函数得到的其实是phead的副本，参见形参传递。
 {
-	if (*pphead == NULL) *pphead = BuySLLNode(x);
+	if (*pphead == NULL)
+	{
+		*pphead = BuySLLNode(x);
+		return;
+	}
 	else
 	{
-		SLLNode* phead = *pphead;	//这里将pphead解引用得到phead值，由于phead存的地址只是一个值，需要将其赋给一个pointer以便使用
-		while (phead->data)
+		SLLNode* phead = *pphead;
+		while (phead->next)
 		{
 			phead = phead->next;
 		}
-		phead->data = x;
+		phead->next = BuySLLNode(x);
 	}
 }
 
@@ -56,8 +61,12 @@ void SLLPushFront(SLLNode** pphead, SLLDataType x)
 void SLLPopBack(SLLNode** pphead)
 {
 	SLLNode* p = *pphead;
-	if (*pphead == 0) printf("The sinked list is empty.");		//链表空
-	if (p->next == NULL) free(p);		//链表只有一个结点
+	if (*pphead == 0)
+	{
+		printf("The sinked list is empty.");		//链表空
+		return;
+	}
+	/*if (p->next == NULL) free(p);*/		//链表只有一个结点
 	else     //链表有至少两个结点
 	{
 		while (p->next->next)
@@ -85,13 +94,17 @@ void SLLPopFront(SLLNode** pphead)
 SLLNode* SLLFind(SLLNode* phead, SLLDataType x)
 {
 	SLLNode* p = phead;
-	if (p == 0) printf("The sinked list is empty.");
+	if (p == 0)
+	{
+		printf("The sinked list is empty.");
+		return NULL;
+	}
 	else
 	{
 		/*while (p->data != x)
 		{p = p->next;}
 		return p;*/ //这种写法无法识别x不在ssl中的情况
-		while (p->data)
+		while (p)
 		{
 			if (p->data == x) return p;
 			else p = p->next;
@@ -101,9 +114,9 @@ SLLNode* SLLFind(SLLNode* phead, SLLDataType x)
 }
 
 //在某元素后插入一个新元素
-void SLLInsertAfter(SLLDataType x, SLLNode* pos)
+void SLLInsertAfter(SLLNode* pos, SLLDataType x)
 {
-	if (pos == 0) printf("The position of sinked list is empty.");
+	assert(pos);
 	SLLNode* newnode = BuySLLNode(x);
 	newnode->next = pos->next;
 	pos->next = newnode;
@@ -112,7 +125,11 @@ void SLLInsertAfter(SLLDataType x, SLLNode* pos)
 //删除某元素后的一个元素
 void SLLEraseAfter(SLLNode* pos)
 {
-	if (pos == 0) printf("The position of sinked list is empty.");
+	if (pos == 0)
+	{
+		printf("The position of sinked list is empty.");
+		return;
+	}
 	if (pos->next == NULL) return;
 	SLLNode* p = pos->next;
 	pos->next = p->next;
