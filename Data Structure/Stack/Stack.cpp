@@ -1,17 +1,18 @@
 #include"Stack.h"
 #define _CRT_SECURE_NO_WARNINGS 1
-void StackInit(Stack* ps, int x)		//初始化
+
+void StackInit(Stack* ps)		//初始化
 {
 	assert(ps);
-	STDataType* p = (STDataType*)malloc(x * sizeof(STDataType));
+	STDataType* p = (STDataType*)malloc(4 * sizeof(STDataType)); //初始化开辟4个数据大小的动态内存空间
 	if (p == NULL)
 	{
 		perror("malloc");
 		exit(-1);
 	}
-	ps->_a = p;
+	ps->data = p;
 	ps->_top = 0;
-	ps->_capacity = x;
+	ps->_capacity = 4;
 }
 
 void StackPush(Stack* ps, STDataType x)		//入栈
@@ -19,17 +20,17 @@ void StackPush(Stack* ps, STDataType x)		//入栈
 	assert(ps);
 	if (ps->_top == ps->_capacity)
 	{
-		STDataType* p = (STDataType*)realloc(ps->_a, ps->_capacity * 2 * sizeof(STDataType));
+		STDataType* p = (STDataType*)realloc(ps->data, ps->_capacity * 2 * sizeof(STDataType));
 		//注意，realloc第二个参数是扩容后的总容量
 		if (p == NULL)
 		{
 			perror("malloc");
 			exit(-1);
 		}
-		ps->_a = p;
+		ps->data = p;
 		ps->_capacity = ps->_capacity * 2;
 	}
-	ps->_a[ps->_top] = x;
+	ps->data[ps->_top] = x;
 	ps->_top++;
 }
 
@@ -50,14 +51,20 @@ STDataType StackTop(Stack* ps)		//取栈顶元素
 {
 	assert(ps);
 	assert(StackEmpty);
-	return(ps->_a[ps->_top - 1]);		//注意top-1
+	return(ps->data[ps->_top - 1]);		//注意top-1
 }
 
 void StackDestroy(Stack* ps)		//销毁栈是指将栈的容量归零，因此，仅仅释放数组即可
 {
 	assert(ps);
-	free(ps->_a);
-	ps->_a = NULL;
+	free(ps->data);
+	ps->data = NULL;
 	ps->_capacity = 0;
 	ps->_top = 0;
+}
+
+int StackSize(Stack* ps)
+{
+	assert(ps);
+	return ps->_top;
 }
