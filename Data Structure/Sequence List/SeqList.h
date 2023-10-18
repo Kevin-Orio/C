@@ -5,8 +5,8 @@
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
-#include<assert.h>
-#define INIT_CAPACITY 3
+#include <assert.h>
+#define INIT_CAPACITY 4
 
 typedef int SLDateType;
 typedef struct SeqList
@@ -32,3 +32,5 @@ int SeqListFind(SeqList* ps, SLDateType x);
 void SeqListInsert(SeqList* ps, int pos, SLDateType x);
 // 顺序表删除pos位置的值
 void SeqListErase(SeqList* ps, int pos);
+
+SeqList A_Random_SeqList();

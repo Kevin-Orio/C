@@ -1,4 +1,5 @@
-#include"SeqList.h"
+#include "SeqList.h"
+#include <time.h>
 
 //标准初始化
 void SeqListInit(SeqList* ps)
@@ -97,7 +98,7 @@ void SeqListCheckCapacity(SeqList* ps)
 		ps->a = tmp;
 
 		ps->capacity *= 2;
-		printf("扩容成功！");
+		printf("扩容成功！\n");
 	}
 
 }
@@ -132,7 +133,7 @@ int SeqListFind(SeqList* ps, SLDateType x)
 }
 
 
-//标准顺序表指定位置插入
+//标准顺序表指定位置插入，pos为下标，注意先将位序转换成下标，下标=位序-1
 void SeqListInsert(SeqList* ps, int pos, SLDateType x)
 {
 	assert(ps);
@@ -158,3 +159,15 @@ void SeqListErase(SeqList* ps, int pos)
 	ps->size--;
 }
 
+//构造一个顺序表，内含10个随机整数
+SeqList A_Random_SeqList()
+{
+	SeqList L;
+	SeqListInit(&L);
+	srand((unsigned int)time(NULL));
+	for (int i = 1; i <= 10; i++)
+	{
+		SeqListPushBack(&L, rand());
+	}
+	return L;
+}
