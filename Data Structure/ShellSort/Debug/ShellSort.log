@@ -1,0 +1,3 @@
+﻿  InsertSort.cpp
+D:\CODE\C\Data Structure\ShellSort\InsertSort.cpp(24,1): warning C4326: “main”的返回类型应为“int”而非“void”
+  ShellSort.vcxproj -> D:\CODE\C\Data Structure\ShellSort\Debug\ShellSort.exe
