@@ -1,3 +1,8 @@
-﻿  InsertSort.cpp
-D:\CODE\C\Data Structure\ShellSort\InsertSort.cpp(24,1): warning C4326: “main”的返回类型应为“int”而非“void”
-  ShellSort.vcxproj -> D:\CODE\C\Data Structure\ShellSort\Debug\ShellSort.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(459,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ShellSort.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  SortFunction.cpp
+D:\CODE\C\Data Structure\ShellSort\SortFunction.cpp(84,25): warning C4552: ”>“: 未使用表达式结果
+  SortFunction.h
+  test.cpp
+D:\CODE\C\Data Structure\ShellSort\test.cpp(6,1): warning C4326: “main”的返回类型应为“int”而非“void”
+  正在生成代码...
+  ShellSort.vcxproj -> D:\CODE\C\Data Structure\ShellSort\Debug\Sort.exe
