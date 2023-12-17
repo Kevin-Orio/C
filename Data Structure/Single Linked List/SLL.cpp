@@ -29,7 +29,7 @@ SLLNode* BuySLLNode(SLLDataType x)
 void SLLPushBack(SLLNode** pphead, SLLDataType x)
 //这里使用一个指针指向phead，从而可以在函数中修改phead值。否则，若直接将phead传入函数，函数得到的其实是phead的副本，参见形参传递。
 {
-	if (*pphead == NULL)
+	if (*pphead == NULL) //pphead存储的是phead地址，因此*pphead=phead的值
 	{
 		*pphead = BuySLLNode(x);
 		return;

@@ -21,7 +21,7 @@ void StackPush(Stack* ps, STDataType x)		//入栈
 	if (ps->_top == ps->_capacity)
 	{
 		STDataType* p = (STDataType*)realloc(ps->data, ps->_capacity * 2 * sizeof(STDataType));
-		//注意，realloc第二个参数是扩容后的总容量
+		//注意，realloc第二个参数是扩容后的总容量，返回值为调整后的那段连续空间的首地址
 		if (p == NULL)
 		{
 			perror("malloc");
